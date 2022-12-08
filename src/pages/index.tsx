@@ -1,7 +1,6 @@
 import { type NextPage } from "next";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import { useEffect, useMemo } from "react";
 import Logo from "../components/icons/Logo";
 import { UserIcon } from "../components/icons/UserIcon";
 import { PostCard } from "../components/PostCard";

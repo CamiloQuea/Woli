@@ -4,7 +4,7 @@ import Image from "next/image";
 import React, { Fragment } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import { AiOutlineLogin, AiOutlineLogout, AiOutlineUser } from "react-icons/ai";
-import { LoginModal } from "../auth/LoginModal";
+
 import { useRouter } from "next/router";
 
 interface AuthMenuProps {
@@ -15,7 +15,7 @@ export const AuthMenu = ({ className }: AuthMenuProps) => {
   // const [isOpen, setIsOpen] = React.useState(false);
   const { data: session } = useSession();
   const { push } = useRouter();
- 
+
   return (
     <>
       <Popover className={`relative ${className}`}>

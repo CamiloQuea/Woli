@@ -1,6 +1,5 @@
 import type { TableOptions } from "@tanstack/react-table";
 import { flexRender, useReactTable } from "@tanstack/react-table";
-import { Spinner } from "../../../../../personales/laboratoriojose/main/src/components/utils/Spinner";
 
 interface TableProps<TValue> extends TableOptions<TValue> {
   className?: string;

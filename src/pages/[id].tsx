@@ -1,7 +1,4 @@
-import { useSession } from "next-auth/react";
-import Image from "next/image";
 import { useRouter } from "next/router";
-import React from "react";
 import { UserIcon } from "../components/icons/UserIcon";
 import { PostCard } from "../components/PostCard";
 import { useObserverRef } from "../hooks/useObserverRef";

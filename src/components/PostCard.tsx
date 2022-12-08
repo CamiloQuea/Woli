@@ -12,6 +12,7 @@ interface PostProps {
   post: Post & {
     user: User;
   };
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   myref?: any;
 }
 moment.locale("es");

@@ -1,10 +1,8 @@
 import type { GetServerSideProps } from "next";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/router";
-import React from "react";
 import { useForm } from "react-hook-form";
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
-import { FcGoogle } from "react-icons/fc";
 import { GoogleLogin } from "../components/buttons/GoogleLogin";
 import { AuthLayout } from "../layout/AuthLayout";
 import { getServerAuthSession } from "../server/common/get-server-auth-session";
