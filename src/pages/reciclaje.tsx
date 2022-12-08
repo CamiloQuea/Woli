@@ -36,7 +36,7 @@ const Reciclaje = () => {
     createColumnHelper<NonNullable<typeof allRequest>[0]>();
 
   return (
-    <MainLayout>
+    <MainLayout secure={false}>
       <div className="mx-auto h-full w-full  py-6 px-10 ">
         <div className="flex h-full gap-2 ">
           <div className="grow rounded-xl border bg-white">
