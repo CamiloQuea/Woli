@@ -3,7 +3,12 @@ import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import React, { Fragment } from "react";
 import { FaUserCircle } from "react-icons/fa";
-import { AiOutlineLogin, AiOutlineLogout, AiOutlineUser } from "react-icons/ai";
+import {
+  AiOutlineBlock,
+  AiOutlineLogin,
+  AiOutlineLogout,
+  AiOutlineUser,
+} from "react-icons/ai";
 
 import { useRouter } from "next/router";
 
@@ -22,7 +27,7 @@ export const AuthMenu = ({ className }: AuthMenuProps) => {
         {({ open, close }) => (
           <>
             <div className="flex items-center">
-              <span className="mr-2 text-xs text-neutral-500">
+              <span className="mr-2 text-xs text-neutral-500 capitalize font-medium">
                 {session?.user?.name}
               </span>
               <Popover.Button className={"flex items-center outline-none"}>
@@ -57,13 +62,13 @@ export const AuthMenu = ({ className }: AuthMenuProps) => {
             >
               <Popover.Panel
                 className={
-                  "absolute top-full right-0 z-20 mt-1 w-40 border bg-neutral-50 shadow"
+                  " absolute top-full right-0 z-20 mt-1 w-40 rounded-md border bg-neutral-50 text-sm font-medium text-neutral-500 shadow"
                 }
               >
                 {!session ? (
-                  <ul className="flex flex-col text-sm ">
+                  <ul className="flex flex-col  text-sm">
                     <li
-                      className="flex cursor-pointer items-center gap-2 p-2 hover:bg-neutral-100"
+                      className="flex cursor-pointer items-center gap-2 py-2 px-4 hover:bg-neutral-100"
                       onClick={() => {
                         push(`/login`);
                       }}
@@ -72,12 +77,12 @@ export const AuthMenu = ({ className }: AuthMenuProps) => {
                       <span>Ingresa</span>
                     </li>
                     <li
-                      className="flex cursor-pointer items-center gap-2 p-2 hover:bg-neutral-100"
+                      className="flex cursor-pointer items-center gap-2 py-2 px-4 hover:bg-neutral-100"
                       onClick={() => {
                         push(`/register`);
                       }}
                     >
-                      <AiOutlineLogin />
+                      <AiOutlineBlock />
                       <span>Registrarse</span>
                     </li>
                   </ul>

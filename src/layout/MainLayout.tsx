@@ -1,5 +1,7 @@
-
+import { useSession } from "next-auth/react";
 import React from "react";
+import { InformationBanner } from "../components/InformationBanner";
+import { HeroHome } from "../components/HeroBanner";
 import { Navbar } from "../components/nav/Navbar";
 
 interface MainLayoutProps {
@@ -7,11 +9,24 @@ interface MainLayoutProps {
   className?: string;
 }
 
-export const MainLayout = ({ children,className }: MainLayoutProps) => {
+export const MainLayout = ({ children, className }: MainLayoutProps) => {
+  const { status } = useSession();
+
+  if (status === "loading") return <></>;
+
   return (
-    <main className={`min-h-screen bg-neutral-100 flex flex-col ${className}`}>
+    <main className={`flex min-h-screen flex-col bg-neutral-50 ${className}`}>
       <Navbar />
-      {children}
+      <div className="">
+        {status === "authenticated" ? (
+          children
+        ) : (
+          <div className="flex flex-grow flex-col ">
+            <HeroHome />
+            <InformationBanner />
+          </div>
+        )}
+      </div>
     </main>
   );
 };

@@ -42,7 +42,7 @@ model PostHasComment {
   id        String   @id @default(cuid())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  post      Post     @relation(fields: [postId], references: [id])
+  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
   postId    String
   comment   String
   user      User     @relation(fields: [userId], references: [id])

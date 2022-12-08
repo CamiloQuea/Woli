@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@layer base {
+/* @layer base {
   [type="text"],
   [type="email"],
   [type="url"],
@@ -24,6 +24,6 @@
   [type="radio"] {
     @apply rounded border-gray-300 text-blue-600 focus:ring-blue-500;
   }
-}
+} */
 
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap");

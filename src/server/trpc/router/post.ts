@@ -105,4 +105,36 @@ export const postRouter = router({
         },
       });
     }),
+  delete: protectedProcedure
+    .input(
+      z.object({
+        id: z.string(),
+      })
+    )
+    .mutation(async ({ input, ctx }) => {
+      console.log(input);
+      const post = await ctx.prisma.post.findUnique({
+        where: {
+          id: input.id,
+        },
+      });
+
+      console.log({ post });
+
+      if (!post) return null;
+
+      console.log(
+        "USER",
+        ctx.session.user.id !== post.userId,
+        ctx.session.user.id,
+        post.userId
+      );
+      if (ctx.session.user.id !== post.userId) return null;
+
+      return await ctx.prisma.post.delete({
+        where: {
+          id: input.id,
+        },
+      });
+    }),
 });

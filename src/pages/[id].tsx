@@ -18,6 +18,7 @@ const Profile = () => {
       },
       {
         getNextPageParam: (lastPage) => lastPage.nextCursor,
+        
       }
     );
 

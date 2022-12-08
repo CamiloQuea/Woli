@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 import { GoogleLogin } from "../components/buttons/GoogleLogin";
+import Input from "../components/forms/Input";
 import { AuthLayout } from "../layout/AuthLayout";
 import { getServerAuthSession } from "../server/common/get-server-auth-session";
 
@@ -51,7 +52,7 @@ const Login = () => {
         </div>
 
         <form onSubmit={onSubmit} className={"mx-auto flex  flex-col gap-3"}>
-          <input
+          <Input
             {...register("username", { required: true })}
             autoCapitalize="off"
             autoCorrect="off"
@@ -59,7 +60,7 @@ const Login = () => {
             placeholder="Usuario"
             className=""
           />
-          <input
+          <Input
             {...register("password", { required: true })}
             type="password"
             placeholder="Contraseña"

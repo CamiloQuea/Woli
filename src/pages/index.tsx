@@ -1,14 +1,34 @@
 import { type NextPage } from "next";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
+import { AiOutlineUnorderedList } from "react-icons/ai";
 import Logo from "../components/icons/Logo";
-import { UserIcon } from "../components/icons/UserIcon";
 import { PostCard } from "../components/PostCard";
 import { useObserverRef } from "../hooks/useObserverRef";
 import { MainContentLayout } from "../layout/MainContentLayout";
 import { MainLayout } from "../layout/MainLayout";
 import { CreatePost } from "../modules/CreatePost";
 import { trpc } from "../utils/trpc";
+
+interface ItemProps extends React.HTMLAttributes<HTMLButtonElement> {
+  icon: React.ReactNode;
+  name: string;
+}
+
+const Item = ({ icon, name, ...props }: ItemProps) => {
+  return (
+    <button
+      className="relative flex items-center p-3 text-neutral-600 hover:bg-neutral-200 hover:text-neutral-900"
+      {...props}
+    >
+      <div className="absolute flex h-6 w-6 items-center justify-center">
+        {icon}
+      </div>
+
+      <span className="ml-12 font-bold uppercase ">{name}</span>
+    </button>
+  );
+};
 
 const Home: NextPage = () => {
   const { data, refetch, fetchNextPage, hasNextPage } =
@@ -28,45 +48,26 @@ const Home: NextPage = () => {
   const { data: session } = useSession();
   const { push } = useRouter();
 
-  // useMemo(async () => {
-  //   const data = await fetch("www.google.com");
-
-  //   const page = await data.text();
-
-  //   const regexMeta = /<meta[^>]+>/g;
-  //   const regexTittle = /(?<=(<title>))(.|\n)*?(?=<\/title>)/g;
-  //   console.log(page);
-  //   const matches = page.match(regexTittle);
-
-  //   console.log(matches);
-  // }, []);
-
   return (
     <>
       <MainLayout>
         <MainContentLayout
           leftNodes={
             session ? (
-              <div className="h-96 w-full rounded-xl border-[1px] bg-white shadow">
-                <div className="relative h-32 rounded-t-xl bg-gradient-to-b from-cyan-500 to-neutral-50">
-                  <UserIcon className="absolute inset-x-0 -bottom-2 mx-auto scale-150" />
-                </div>
-                <div className="flex flex-col justify-center">
-                  <span className="mt-5 w-full text-center text-lg  text-neutral-500">
+              <div className="flex w-full flex-col divide-y-[1px]">
+                <span className="p-2 text-xl font-bold">Acceso rápido</span>
+                <Item
+                  icon={<AiOutlineUnorderedList className="h-full w-full" />}
+                  name={"peticiones"}
+                  onClick={() => push("/reciclaje")}
+                />
+                
+                {/* <div className="flex ">
+                  <UserIcon className="" />
+                  <span className=" text-lg  text-neutral-500">
                     {session?.user?.name}
                   </span>
-
-                  <ul className="mt-2  px-4 text-center">
-                    <li className="flex cursor-pointer select-none items-center justify-between border-y py-2 hover:bg-neutral-50">
-                      <span
-                        className=" w-full text-center "
-                        onClick={() => push("/reciclaje")}
-                      >
-                        Peticiones
-                      </span>
-                    </li>
-                  </ul>
-                </div>
+                </div> */}
               </div>
             ) : null
           }

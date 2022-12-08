@@ -1,6 +1,7 @@
 import { useSession } from "next-auth/react";
 import React from "react";
 import { useForm } from "react-hook-form";
+import { Button } from "../components/buttons/Button";
 import { UserIcon } from "../components/icons/UserIcon";
 import { Modal } from "../components/utils/Modal";
 import { useControl } from "../hooks/useControl";
@@ -40,7 +41,7 @@ export const CreatePost = ({ onSuccess }: CreatePostProps) => {
       {session ? (
         <div className="flex items-center rounded-md border bg-white p-3 ">
           <div className="flex  grow gap-2 ">
-            <UserIcon className="mt-1.5 shrink-0" />
+            <UserIcon className="mt-1.5 shrink-0" currentUser/>
             <div className="flex w-full flex-col justify-center gap-3">
               <div
                 onClick={onOpen}
@@ -68,12 +69,15 @@ export const CreatePost = ({ onSuccess }: CreatePostProps) => {
                   placeholder="Contenido..."
                   className="h-48 w-full resize-none border-transparent bg-transparent p-2 text-sm text-neutral-500 outline-none ring-0"
                 />
-                <button
-                  className="ml-auto  rounded-xl bg-red-600 px-3 py-2 text-white focus:outline-transparent focus:ring-transparent"
+                <Button
+                  // className="ml-auto  rounded-xl px-3 py-2 text-white focus:outline-transparent focus:ring-transparent"
+                  className="rounded-lg"
+                  intent={'brand'}
+                  size="md"
                   type="submit"
                 >
                   Publicar
-                </button>
+                </Button>
               </form>
             </Modal>
           </div>
