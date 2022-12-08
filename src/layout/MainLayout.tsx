@@ -13,7 +13,7 @@ interface MainLayoutProps {
 export const MainLayout = ({
   children,
   className,
-  secure = false,
+  secure = true,
 }: MainLayoutProps) => {
   const { status } = useSession();
 
