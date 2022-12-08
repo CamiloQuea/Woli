@@ -136,7 +136,8 @@ const Reciclaje = () => {
                 columnHelperAll.accessor("user", {
                   header: "Usuario",
                   cell: (row) =>
-                    row.row.original.user.name || row.row.original.user.name,
+                    row.row.original.user.name ||
+                    row.row.original.user.username,
                 }),
                 columnHelperAll.accessor("status", {
                   header: "Estado",
