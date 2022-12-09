@@ -12,7 +12,7 @@ const Nosotros = () => {
             ¿Quienes somos nosotros?
           </span>
         
-          <Logo className="h-56 w-56 text-black" />
+          <Logo className="h-56 w-56 text-neutral-700" />
         </div>
 
         {/* Nosotros component with information about the company */}
