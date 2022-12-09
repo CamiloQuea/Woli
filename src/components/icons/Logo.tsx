@@ -1,8 +1,8 @@
 import type { HTMLAttributes } from "react";
 import React from "react";
 
-const Logo = (props: HTMLAttributes<HTMLSpanElement>) => (
-  <span {...props}>
+const Logo = (props: HTMLAttributes<HTMLDivElement>) => (
+  <div {...props}>
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 864 752"
@@ -16,7 +16,7 @@ const Logo = (props: HTMLAttributes<HTMLSpanElement>) => (
         stroke="none"
       />
     </svg>
-  </span>
+  </div>
 );
 
 export default Logo;

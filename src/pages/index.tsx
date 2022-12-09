@@ -108,7 +108,7 @@ const Home: NextPage = () => {
                   <div className=" pt-4 text-neutral-500">
                     No hay mas publicaciones
                   </div>
-                  <Logo className="mx-auto mt-20 w-2/4 animate-spin-slow text-blue-700 duration-1000" />
+                  <Logo className="mx-auto mt-20 w-1/4 animate-spin-slow text-blue-700 duration-1000" />
                 </div>
               ) : null}
             </div>
