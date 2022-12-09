@@ -38,7 +38,7 @@ const Reciclaje = () => {
   return (
     <MainLayout secure={false}>
       <div className="mx-auto h-full w-full  py-6 px-10 ">
-        <div className="flex h-full gap-2 ">
+        <div className="flex flex-col md:flex-row h-full gap-2 ">
           <div className="grow rounded-xl border bg-white">
             <h1 className="border-b p-3 text-2xl font-bold">
               Informacion general
@@ -52,6 +52,7 @@ const Reciclaje = () => {
             </div>
           </div>
           <form
+            data-type="create-recycling-request-form"
             onSubmit={onSubmit}
             className="flex w-full  flex-col gap-4 rounded-xl border bg-white p-3 md:w-96"
           >
@@ -83,12 +84,12 @@ const Reciclaje = () => {
             </button>
           </form>
         </div>
-        <div className="flex gap-5">
-          <section className="w-full">
+        <div className="flex flex-col">
+          <section className="flex h-96 w-full flex-col" data-type="myTable">
             <h1 className="py-6 text-xl font-medium">Tu lista de peticiones</h1>
 
             <Table
-              className="h-full w-full"
+              className="w-full grow"
               columns={[
                 columnHelper.accessor("material", {
                   header: "Material",
@@ -115,7 +116,10 @@ const Reciclaje = () => {
               getCoreRowModel={getCoreRowModel()}
             />
           </section>
-          <section className="w-full">
+          <section
+            className="flex h-96 w-full flex-col "
+            data-type="public-recycling-request-table"
+          >
             <h1 className="py-6 text-xl font-medium">Peticiones publicas</h1>
 
             <Table

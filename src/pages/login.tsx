@@ -2,6 +2,7 @@ import type { GetServerSideProps } from "next";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 import { GoogleLogin } from "../components/buttons/GoogleLogin";
 import Input from "../components/forms/Input";
@@ -16,16 +17,25 @@ const Login = () => {
   const { push } = useRouter();
 
   const onSubmit = handleSubmit(async (data) => {
-    
+    const toastLoadingId = toast.loading("Iniciando sesión...");
+
     const status = await signIn("credentials", {
       ...data,
       redirect: false,
       callbackUrl: "/",
     });
 
+   
+
     if (status?.ok) {
-      push("/");
+      toast.success("Inicio correcto", {
+        id: toastLoadingId,
+      });
+      return push("/");
     }
+    toast.success("Verifique sus credenciales", {
+      id: toastLoadingId,
+    });
   });
 
   return (

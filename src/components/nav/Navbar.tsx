@@ -31,7 +31,7 @@ export const Navbar = () => {
   });
 
   return (
-    <div className="sticky top-0 z-10 flex h-16 items-center  gap-2  bg-neutral-50/80 backdrop-blur-md">
+    <div className="sticky top-0 z-10 flex h-16 items-center  gap-2  bg-white/90 border-b backdrop-blur-md">
       <div className="flex items-center ">
         <Logo
           className="stroke ml-4 flex h-10 w-10  shrink-0 grow-0  cursor-pointer items-center stroke-2 text-blue-500 transition-transform ease-in-out hover:-rotate-12"

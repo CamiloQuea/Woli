@@ -27,7 +27,7 @@ export const AuthMenu = ({ className }: AuthMenuProps) => {
         {({ open, close }) => (
           <>
             <div className="flex items-center">
-              <span className="mr-2 text-xs text-neutral-500 capitalize font-medium">
+              <span className="mr-2 text-xs text-neutral-500 font-medium">
                 {session?.user?.name}
               </span>
               <Popover.Button className={"flex items-center outline-none"}>

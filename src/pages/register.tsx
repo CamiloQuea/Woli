@@ -3,6 +3,7 @@ import type { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 import React from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 
 import { GoogleLogin } from "../components/buttons/GoogleLogin";
@@ -22,11 +23,15 @@ const Register = () => {
   const onSubmit = handleSubmit((data) => {
     mutate(data, {
       onSuccess: () => {
-        console.log("user created");
+        toast.success("user created");
         push("/login");
       },
       onError: (err) => {
-        console.log(err.data);
+        toast.error(
+          err.data?.code === "INTERNAL_SERVER_ERROR"
+            ? "Nombre de usuario en uso"
+            : "Error desconocido"
+        );
       },
     });
   });
@@ -75,7 +80,7 @@ const Register = () => {
             type="submit"
             className="rounded bg-gradient-to-br from-blue-400 to-indigo-500 py-2 font-medium text-white"
           >
-            Ingresar
+            Registrarse
           </button>
         </form>
 

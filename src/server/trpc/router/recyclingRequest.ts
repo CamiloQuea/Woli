@@ -7,12 +7,18 @@ export const recyclingRequestRouter = router({
       where: {
         userId: ctx.session.user.id,
       },
+      orderBy: {
+        createdAt: "desc",
+      },
     });
   }),
   getAll: protectedProcedure.query(({ ctx }) => {
     return ctx.prisma.recyclingRequest.findMany({
       include: {
         user: true,
+      },
+      orderBy: {
+        createdAt: "desc",
       },
     });
   }),

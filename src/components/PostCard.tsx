@@ -58,11 +58,10 @@ export const PostCard = ({ post, myref }: PostProps) => {
       });
     });
   });
-  const { push } = useRouter();
+  const { push, reload } = useRouter();
 
-  console.log(post.user.image);
   return (
-    <div className="relative flex flex-col gap-3" ref={myref}>
+    <div className="relative flex flex-col gap-3" ref={myref} data-type="post">
       <div className="rounded-md border bg-white shadow">
         <div className="absolute right-1 top-0">
           {session && post.userId === session?.user?.id ? (
@@ -98,7 +97,14 @@ export const PostCard = ({ post, myref }: PostProps) => {
                         <li
                           className="flex cursor-pointer items-center gap-2 py-2 px-4 hover:bg-neutral-100"
                           onClick={() => {
-                            deletePost({ id: post.id });
+                            deletePost(
+                              { id: post.id },
+                              {
+                                onSuccess: () => {
+                                  reload();
+                                },
+                              }
+                            );
                           }}
                         >
                           <span>Eliminar</span>
@@ -129,7 +135,10 @@ export const PostCard = ({ post, myref }: PostProps) => {
           </div>
         </div>
         {/* <Button loading>Test</Button> */}
-        <p className="whitespace-pre px-4 pb-4 text-justify text-sm text-neutral-500">
+        <p
+          className="w-full whitespace-pre-wrap px-4 pb-4 text-justify text-sm text-neutral-500"
+          data-type="postContent"
+        >
           {post.content}
         </p>
         {/* <div className="h-10 border-t">
@@ -182,7 +191,7 @@ export const PostCard = ({ post, myref }: PostProps) => {
                     >
                       {comment.user.name || comment.user.username}
                     </span>
-                    <p className="text-sm text-neutral-500 ">
+                    <p className="whitespace-pre-wrap text-sm text-neutral-500">
                       {" "}
                       {comment.comment}
                     </p>

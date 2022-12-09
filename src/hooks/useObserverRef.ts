@@ -12,9 +12,9 @@ export const useObserverRef = ({
     (node) => {
       if (intObserver.current) intObserver.current.disconnect();
       intObserver.current = new IntersectionObserver((entries) => {
-        // console.log(hasNextPage);
+   
         if (entries[0]?.isIntersecting && hasNextPage) {
-          console.log("Cargando mas posts");
+         
           onIntersect();
         }
       });

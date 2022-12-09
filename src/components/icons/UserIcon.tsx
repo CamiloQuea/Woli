@@ -15,10 +15,10 @@ export const UserIcon = ({
   ...props
 }: UserIconProps) => {
   const { data: session } = useSession();
-  // console.log(imageUrl);
+
   return (
     <div
-      className={` ${className} h-7 w-7 rounded-full bg-white text-neutral-600 `}
+      className={` ${className} h-7 w-7 shrink-0 rounded-full bg-white text-neutral-600 `}
       {...props}
     >
       {currentUser && session?.user?.image ? (

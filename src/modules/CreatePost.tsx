@@ -39,13 +39,16 @@ export const CreatePost = ({ onSuccess }: CreatePostProps) => {
   return (
     <>
       {session ? (
-        <div className="flex items-center rounded-md border bg-white p-3 ">
+        <div
+          className="flex items-center rounded-md border bg-white p-3 "
+          id="createPost"
+        >
           <div className="flex  grow gap-2 ">
-            <UserIcon className="mt-1.5 shrink-0" currentUser/>
+            <UserIcon className="mt-1.5 shrink-0" currentUser />
             <div className="flex w-full flex-col justify-center gap-3">
               <div
                 onClick={onOpen}
-                className="peer  w-full resize-none rounded-md border bg-neutral-50 p-2 text-sm text-neutral-500 outline-none cursor-pointer"
+                className="peer  w-full cursor-pointer resize-none rounded-md border bg-neutral-50 p-2 text-sm text-neutral-500 outline-none"
               >
                 Crea una publicación...
               </div>
@@ -61,6 +64,7 @@ export const CreatePost = ({ onSuccess }: CreatePostProps) => {
               className="w-[500px]"
             >
               <form
+                id="createPostForm"
                 className="flex  flex-col justify-center gap-3 p-3 "
                 onSubmit={onSubmit}
               >
@@ -72,7 +76,7 @@ export const CreatePost = ({ onSuccess }: CreatePostProps) => {
                 <Button
                   // className="ml-auto  rounded-xl px-3 py-2 text-white focus:outline-transparent focus:ring-transparent"
                   className="rounded-lg"
-                  intent={'brand'}
+                  intent={"brand"}
                   size="md"
                   type="submit"
                 >
