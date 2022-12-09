@@ -1,11 +1,8 @@
 import { Transition } from "@headlessui/react";
-import React, { FC } from "react";
-import toast, {
-  resolveValue,
-  Toast,
-  ToastIcon,
-  ToastType,
-} from "react-hot-toast";
+import type { FC } from "react";
+import React from "react";
+import type { Toast, ToastType } from "react-hot-toast";
+import toast, { resolveValue, ToastIcon } from "react-hot-toast";
 // import { useToasterStore } from 'react-hot-toast';
 
 interface ToastModalProps {
@@ -21,14 +18,11 @@ const bg: { [key in ToastType]: string } = {
 };
 
 export const ToastModal: FC<ToastModalProps> = ({ toast: t }) => {
-
-
   return (
     <Transition
       appear
       show={t.visible}
       onClick={() => {
-
         toast.dismiss(t.id);
       }}
       className={`flex transform cursor-pointer select-none items-center rounded border-[1px] px-2 py-3 shadow-lg ${
