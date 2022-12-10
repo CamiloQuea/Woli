@@ -8,6 +8,9 @@ import type { RouterInputs } from "../utils/trpc";
 import { trpc } from "../utils/trpc";
 import moment from "moment";
 import Input from "../components/forms/Input";
+import { GetServerSideProps } from "next";
+import { unstable_getServerSession } from "next-auth";
+import { authOptions } from "./api/auth/[...nextauth]";
 
 const Reciclaje = () => {
   const { data, refetch } = trpc.recyclingRequest.getAllMine.useQuery();
@@ -38,7 +41,7 @@ const Reciclaje = () => {
   return (
     <MainLayout secure={false}>
       <div className="mx-auto h-full w-full  py-6 px-10 ">
-        <div className="flex flex-col md:flex-row h-full gap-2 ">
+        <div className="flex h-full flex-col gap-2 md:flex-row ">
           <div className="grow rounded-xl border bg-white">
             <h1 className="border-b p-3 text-2xl font-bold">
               Informacion general
@@ -156,6 +159,26 @@ const Reciclaje = () => {
       </div>
     </MainLayout>
   );
+};
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const session = await unstable_getServerSession(
+    context.req,
+    context.res,
+    authOptions
+  );
+
+  if (session)
+    return {
+      props: {},
+    };
+
+  return {
+    redirect: {
+      destination: "/",
+      permanent: false,
+    },
+  };
 };
 
 export default Reciclaje;
